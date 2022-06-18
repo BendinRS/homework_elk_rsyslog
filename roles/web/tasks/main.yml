@@ -49,7 +49,7 @@
   - name: web | copy audisp-remote.conf
     template:
        src: ./files/audisp-remote.conf.j2
-       dest: /etc/audisp/audispd.conf
+       dest: /etc/audisp/audisp-remote.conf
 
   - name: web | copy audit.rules
     template:
