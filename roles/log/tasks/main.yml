@@ -13,3 +13,4 @@
 
   - name: log | restart chronyd
     shell: systemctl restart chronyd
+
