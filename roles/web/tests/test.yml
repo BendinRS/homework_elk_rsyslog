@@ -1,0 +1,5 @@
+---
+- hosts: web_group
+  become: true
+  roles:
+    - web

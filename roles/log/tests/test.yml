@@ -1,0 +1,5 @@
+---
+- hosts: log_group
+  become: true
+  roles:
+    - log

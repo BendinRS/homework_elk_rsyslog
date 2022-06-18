@@ -1,0 +1,7 @@
+---
+# tasks file for elk_rsyslog
+  - name: elk | install epel-release
+    yum:
+      state: present
+      name:
+        - epel-release
