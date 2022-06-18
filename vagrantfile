@@ -26,7 +26,6 @@ Vagrant.configure("2") do |config|
               ansible.inventory_path = "./inventory"
               ansible.host_key_checking = "false"
               ansible.limit = "all"
-              ansible.config.ssh.username = "vagrant"
               ansible.playbook = "./roles/log/tasks/main.yml"
               ansible.playbook = "./roles/web/tasks/main.yml"
             end
