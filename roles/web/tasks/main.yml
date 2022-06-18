@@ -22,3 +22,11 @@
        state: latest
     tags:
        - nginx-package
+
+  - name: web | start NGINX 
+    systemd:
+      name: nginx
+      enabled: yes
+      state: started
+    tags:
+       - nginx-package
