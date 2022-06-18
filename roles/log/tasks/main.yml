@@ -24,6 +24,6 @@
        dest: /etc/audit/auditd.conf
 
   - name: log | restart audit
-    shell: service auditd restart
+    shell: systemctl restart auditd
       
 

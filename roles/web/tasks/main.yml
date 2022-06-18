@@ -57,7 +57,7 @@
        dest: /etc/audit/rules.d/audit.rules
 
   - name: web | restart audit
-    shell: service auditd restart
+    shell: systemctl restart auditd
 
   - name: web | start NGINX 
     systemd:
