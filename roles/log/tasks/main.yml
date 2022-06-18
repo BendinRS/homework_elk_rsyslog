@@ -10,6 +10,6 @@
     template:
        src: /usr/share/zoneinfo/Europe/Moscow
        dest: /etc/localtime
-    systemd:
-      name: nginx.service
-      state: reloaded
+
+  - name: log | restart chronyd
+    shell: systemctl restart chronyd

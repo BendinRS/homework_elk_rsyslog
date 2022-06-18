@@ -6,10 +6,5 @@
       name:
         - epel-release
 
-  - name: web | sinc time-zone and restart chronyd
-    template:
-       src: /usr/share/zoneinfo/Europe/Moscow
-       dest: /etc/localtime
-    systemd:
-      name: nginx.service
-      state: reloaded
+  - name: web | restart chronyd
+    shell: systemctl restart chronyd
