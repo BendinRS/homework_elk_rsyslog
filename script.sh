@@ -1,3 +1,3 @@
-ansible-playbook ./roles/elk/tasks/main.yml 
-ansible-playbook ./roles/log/tasks/main.yml 
-ansible-playbook ./roles/web/tasks/main.yml 
+ansible-playbook ./roles/elk/tests/test.yml 
+ansible-playbook ./roles/log/tests/test.yml 
+ansible-playbook ./roles/web/tests/test.yml 
