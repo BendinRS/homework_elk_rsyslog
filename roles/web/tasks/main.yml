@@ -24,7 +24,9 @@
        - nginx-package
 
   - name: web | install audispd-plugins
-    shell: yum install audispd-plugins -y
+    yum:
+       name: audispd-plugins
+       state: latest
 
   - name: web | copy nginx.conf
     template:
