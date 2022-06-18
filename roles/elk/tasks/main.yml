@@ -6,7 +6,7 @@
       name:
         - epel-release
 
-  - name: elk | sinc time-zone and restart chronyd
+  - name: elk | sinc time-zone
     template:
        src: /usr/share/zoneinfo/Europe/Moscow
        dest: /etc/localtime
