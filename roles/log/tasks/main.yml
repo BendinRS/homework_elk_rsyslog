@@ -1,6 +1,6 @@
 ---
 # tasks file for log
-  - name: spawn | install epel-release
+  - name: log | install epel-release
     yum:
       state: present
       name:

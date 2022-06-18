@@ -1,6 +1,7 @@
 ---
 # tasks file for web
-  - name: spawn | copy file spawn-fcgi
-    template:
-       src: files/spawn-fcgi
-       dest: /etc/sysconfig/spawn-fcgi
+  - name: web | install epel-release
+    yum:
+      state: present
+      name:
+        - epel-release
