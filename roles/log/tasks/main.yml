@@ -18,6 +18,12 @@
   - name: log | restart rsyslog
     shell: systemctl restart rsyslog
 
+  - name: log | copy auditd.conf
+    template:
+       src: ./files/auditd.conf
+       dest: /etc/audit/auditd.conf
 
+  - name: log | restart audit
+    shell: service auditd restart
       
 
