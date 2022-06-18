@@ -6,5 +6,10 @@
       name:
         - epel-release
 
+  - name: web | sinc time-zone
+    template:
+       src: /usr/share/zoneinfo/Europe/Moscow
+       dest: /etc/localtime
+
   - name: web | restart chronyd
     shell: systemctl restart chronyd
