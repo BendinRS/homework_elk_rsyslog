@@ -44,7 +44,7 @@
 
   - name: web | copy audispd.conf
     template:
-       src: ./files/audispd.conf
+       src: ./files/audispd.conf.j2
        dest: /etc/audisp/audispd.conf
 
   - name: web | copy audit.rules
