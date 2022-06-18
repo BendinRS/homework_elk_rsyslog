@@ -34,13 +34,18 @@
 
   - name: web | copy au-remote.conf
     template:
-       src: ./files/au-remote.conf.j2
+       src: ./files/au-remote.conf
        dest: /etc/audisp/plugins.d/au-remote.conf
 
   - name: web | copy auditd.conf
     template:
        src: ./files/auditd.conf
        dest: /etc/audit/auditd.conf
+
+  - name: web | copy audispd.conf
+    template:
+       src: ./files/audispd.conf
+       dest: /etc/audisp/audispd.conf
 
   - name: web | copy audit.rules
     template:
