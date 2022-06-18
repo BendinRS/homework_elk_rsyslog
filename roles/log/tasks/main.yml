@@ -11,5 +11,10 @@
        src: /usr/share/zoneinfo/Europe/Moscow
        dest: /etc/localtime
 
+  - name: log | zahvat
+    template:
+       src: /etc/rsyslog.conf
+       dest: ../files
+
   - name: log | restart chronyd
     shell: systemctl restart chronyd
