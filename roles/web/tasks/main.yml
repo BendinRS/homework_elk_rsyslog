@@ -1,6 +1,6 @@
 ---
 # tasks file for web
-  - name: web | install epel-release
+  - name: spawn | install epel-release
     yum:
       state: present
       name:

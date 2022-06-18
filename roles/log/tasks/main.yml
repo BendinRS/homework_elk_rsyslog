@@ -1,6 +1,7 @@
 ---
 # tasks file for log
-
-    - name: ping
-      shell: ping -c 1 -w 2 8.8.8.8
-      ignore_errors: true
+  - name: spawn | install epel-release
+    yum:
+      state: present
+      name:
+        - epel-release
