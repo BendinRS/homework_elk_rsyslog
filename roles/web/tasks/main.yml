@@ -23,6 +23,14 @@
     tags:
        - nginx-package
 
+  - name: web | copy nginx.conf
+    template:
+       src: ./files/nginx.conf.j2
+       dest: /etc/nginx/nginx.conf
+
+  - name: web | test config nginx
+    shell: nginx -t
+
   - name: web | start NGINX 
     systemd:
       name: nginx

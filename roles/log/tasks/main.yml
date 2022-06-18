@@ -1,10 +1,5 @@
 ---
 # tasks file for log
-  - name: log | install epel-release
-    yum:
-      state: present
-      name:
-        - epel-release
 
   - name: log | sinc time-zone
     template:
@@ -14,4 +9,15 @@
 
   - name: log | restart chronyd
     shell: systemctl restart chronyd
+
+  - name: log | copy rsyslog.conf
+    template:
+       src: ./files/rsyslog.conf
+       dest: /etc/rsyslog.conf
+
+  - name: log | restart rsyslog
+    shell: systemctl restart rsyslog
+
+
+      
 
