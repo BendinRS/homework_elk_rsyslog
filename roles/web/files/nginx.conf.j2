@@ -1,9 +1,7 @@
 #user  nobody;
 worker_processes  1;
 
-error_log /var/log/nginx/error.log;
-error_log syslog:server={{server_log}}:{{server_port}},tag=nginx_error;
-#access_log syslog:server={{server_log}}:{{server_port}},tag=nginx_access,severity=info combined;
+
 
 #pid        logs/nginx.pid;
 
@@ -22,7 +20,6 @@ http {
     #                  '"$http_user_agent" "$http_x_forwarded_for"';
 
     #access_log  logs/access.log  main;
-    access_log syslog:server={{server_log}}:{{server_port}},tag=nginx_access,severity=info combined;
     sendfile        on;
     #tcp_nopush     on;
 
@@ -38,6 +35,9 @@ http {
         #charset koi8-r;
 
         #access_log  logs/host.access.log  main;
+        error_log /var/log/nginx/error.log;
+        error_log syslog:server={{server_log}}:{{server_port}},tag=nginx_error;
+        access_log syslog:server={{server_log}}:{{server_port}},tag=nginx_access,severity=info combined;
 
         location / {
             root   html;
