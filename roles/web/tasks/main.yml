@@ -16,12 +16,13 @@
     tags:
        - restart_chrony
 
-  - name: web | Install NGINX package from EPEL Repo
+  - name: web | Install NGINX package from EPEL Repo && audispd
     yum:
        name: nginx
        state: latest
     tags:
        - nginx-package
+       - audispd-plugins
 
   - name: web | copy nginx.conf
     template:
@@ -30,6 +31,24 @@
 
   - name: web | test config nginx
     shell: nginx -t
+
+  - name: web | copy au-remote.conf
+    template:
+       src: ./files/au-remote.conf.j2
+       dest: /etc/audisp/plugins.d/au-remote.conf
+
+  - name: web | copy auditd.conf
+    template:
+       src: ./files/auditd.conf
+       dest: /etc/audit/auditd.conf
+
+  - name: web | copy audit.rules
+    template:
+       src: ./files/audit.rules
+       dest: /etc/audit/rules.d/audit.rules
+
+  - name: web | restart audit
+    shell: service auditd restart
 
   - name: web | start NGINX 
     systemd:
