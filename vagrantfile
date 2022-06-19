@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
       
           if opts[:name] == boxes.last[:name]
             config.vm.provision "ansible" do |ansible|
-              ansible.inventory_path = "./inventory"
+              ansible.inventory_path = "./inventories"
               ansible.host_key_checking = "false"
               ansible.limit = "all"
               ansible.playbook = "./roles/log/tasks/main.yml"
