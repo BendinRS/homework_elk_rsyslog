@@ -26,8 +26,7 @@ Vagrant.configure("2") do |config|
               ansible.inventory_path = "./inventories"
               ansible.host_key_checking = "false"
               ansible.limit = "all"
-              ansible.playbook = "./roles/log/tasks/main.yml"
-              ansible.playbook = "./roles/web/tasks/main.yml"
+              ansible.playbook = "./roles/'[:name]'/tasks/main.yml"
             end
           end
         end
