@@ -20,15 +20,8 @@ Vagrant.configure("2") do |config|
         config.vm.define opts[:name] do |config|
           config.vm.hostname = opts[:name]
           config.vm.network "private_network", ip: opts[:ip]
-      
-          if opts[:name] == boxes.last[:name]
-            config.vm.provision "ansible" do |ansible|
-              ansible.inventory_path = "./inventories"
-              ansible.host_key_checking = "false"
-              ansible.limit = "all"
-              ansible.playbook = "./roles/web/tasks/main.yml"
-            end
-          end
+          config.vm.provision "shell", inline: ./script.sh
         end
       end
     end
+  end
