@@ -21,7 +21,14 @@ Vagrant.configure("2") do |config|
       config.vm.define opts[:name] do |config|
         config.vm.hostname = opts[:name]
         config.vm.network "private_network", ip: opts[:ip]
-        config.vm.provision "ansible", playbook: "./roles/log/tasks/main.yml"
+        if opts[:name] == boxes.last[:name]
+          config.vm.provision "ansible" do |ansible|
+          ansible.config_file = './ansible.cfg'
+          ansible.playbook = "./roles/log/tasks/main.yml"
+          ansible.playbook = "./roles/web/tasks/main.yml"
+          ansible.inventory_path = "./inventory"
+          ansible.limit = "all"
+        end
       end
     end
   end
