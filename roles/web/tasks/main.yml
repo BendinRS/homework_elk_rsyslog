@@ -1,0 +1,68 @@
+---
+# tasks file for web
+  - name: web | install epel-release
+    yum:
+      state: present
+      name:
+        - epel-release
+
+  - name: web | sinc time-zone
+    template:
+       src: /usr/share/zoneinfo/Europe/Moscow
+       dest: /etc/localtime
+
+  - name: web | restart chronyd
+    shell: systemctl restart chronyd
+    tags:
+       - restart_chrony
+
+  - name: web | Install NGINX package from EPEL Repo
+    yum:
+       name: nginx
+       state: latest
+    tags:
+       - nginx-package
+
+  - name: web | install audispd-plugins
+    yum:
+       name: audispd-plugins
+       state: latest
+
+  - name: web | copy nginx.conf
+    template:
+       src: ./files/nginx.conf.j2
+       dest: /etc/nginx/nginx.conf
+
+  - name: web | test config nginx
+    shell: nginx -t
+
+  - name: web | copy au-remote.conf
+    template:
+       src: ./files/au-remote.conf
+       dest: /etc/audisp/plugins.d/au-remote.conf
+
+  - name: web | copy auditd.conf
+    template:
+       src: ./files/auditd.conf
+       dest: /etc/audit/auditd.conf
+
+  - name: web | copy audisp-remote.conf
+    template:
+       src: ./files/audisp-remote.conf.j2
+       dest: /etc/audisp/audisp-remote.conf
+
+  - name: web | copy audit.rules
+    template:
+       src: ./files/audit.rules
+       dest: /etc/audit/rules.d/audit.rules
+
+  - name: web | restart audit
+    shell: service auditd restart
+
+  - name: web | start NGINX 
+    systemd:
+      name: nginx
+      enabled: yes
+      state: started
+    tags:
+       - nginx-package

@@ -1,0 +1,29 @@
+---
+# tasks file for log
+
+  - name: log | sinc time-zone
+    template:
+       src: /usr/share/zoneinfo/Europe/Moscow
+       dest: /etc/localtime
+
+
+  - name: log | restart chronyd
+    shell: systemctl restart chronyd
+
+  - name: log | copy rsyslog.conf
+    template:
+       src: ./files/rsyslog.conf
+       dest: /etc/rsyslog.conf
+
+  - name: log | restart rsyslog
+    shell: systemctl restart rsyslog
+
+  - name: log | copy auditd.conf
+    template:
+       src: ./files/auditd.conf
+       dest: /etc/audit/auditd.conf
+
+  - name: log | restart audit
+    shell: service auditd restart
+      
+
