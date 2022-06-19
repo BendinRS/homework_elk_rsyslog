@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
           ansible.raw_arguments  = [
             "--private-key=./.vagrant/machines/log/virtualbox/private_key"  
           ]
-
+        end
         end
       end
     end
