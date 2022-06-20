@@ -69,3 +69,8 @@ a — изменение атрибута
 Для выполнения лабораторной работы выбрана система rsyslog
 Роли [log](roles/log) и [web](roles/web) выполняют задачу
 
+**Директории, куда падают логи с web:**
+
++ /var/log/rsyslog/nginx/*
++ /var/log/audit/audit.log
+
