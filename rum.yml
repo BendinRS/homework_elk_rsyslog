@@ -1,9 +1,11 @@
 - name: setup web
   hosts: web
+  become: yes
   roles:
     - web
   
 - name: setup log
   hosts: log  
+  become: yes
   roles:
     - log
