@@ -1,0 +1,9 @@
+- name: setup web
+  hosts: web
+  roles:
+    - ./roles/web
+  
+- name: setup log
+  hosts: log  
+  roles:
+    - ./roles/log
